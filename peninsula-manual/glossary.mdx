@@ -7,6 +7,174 @@ description: "A single reference for Peninsula terminology and core concepts."
 
 This glossary provides definitions for key terms, concepts, and acronyms used throughout the Peninsula documentation. Use this page as a quick reference when encountering unfamiliar terminology.
 
-## Terms
+---
 
-*This page is a placeholder. Definitions and key concepts will be added as the documentation evolves.*
+## Kelso
+
+Kelso is Peninsula's AI agent layer. Unlike a simple chatbot, Kelso is a persistent worker with tools, memory, and task execution logic. Kelso can:
+
+- Answer natural language questions about ESOP matters grounded in ERISA, IRC, and DOL regulations
+- Edit files including spreadsheets, documents, CSVs, and PDFs
+- Execute custom workflows with human review checkpoints
+- Provide citations and source references for all substantive outputs
+
+Kelso is designed to perform work, not just answer questions.
+
+---
+
+## Data Pool
+
+The Data Pool is the collection of source systems and data stores that Peninsula ingests from. For a typical legal firm, this includes:
+
+- Document management systems and matter repositories
+- Email archives and correspondence
+- Shared drives and cloud storage
+- Meeting transcripts and call notes
+- Structured exports from CRM, accounting, and workflow systems
+- External legal reference sources (where licensed)
+
+The Data Pool represents the raw input before processing and indexing.
+
+---
+
+## Overlay
+
+An Overlay is a client-specific configuration layer that sits on top of Peninsula's standard operating model. Each client implementation has its own overlay that captures:
+
+- Scope policies (what data is in/out of scope)
+- Confidentiality tiers and access rules
+- Workflow configurations and approval gates
+- Taxonomy customizations
+- Open decisions and client-specific FAQs
+
+The EBLG Profile is an example of a client overlay.
+
+---
+
+## Indexing
+
+Indexing is the process of creating retrieval structures that make future queries fast, relevant, and source-grounded. Peninsula uses hybrid indexing:
+
+| Index Type | Purpose |
+| --- | --- |
+| Lexical index | Exact and near-exact keyword matching for precise legal terms and citations |
+| Vector index | Semantic similarity and concept-level retrieval for related ideas |
+| Metadata index | Filters by matter, client, date, confidentiality tier, and document type |
+
+Indexing transforms raw data into searchable knowledge.
+
+---
+
+## Grounding
+
+Grounding is the practice of anchoring AI outputs to specific source documents and evidence. In Peninsula:
+
+- Every substantive output includes citations to source materials
+- Retrieval happens before generation, not after
+- The AI cannot fabricate information that isn't in the indexed corpus
+- Human reviewers can trace any claim back to its origin
+
+Grounding is the primary mechanism for reducing hallucinations and ensuring defensibility.
+
+---
+
+## Knowledge Graph
+
+The Knowledge Graph is Peninsula's structured representation of relationships between legal concepts, matters, precedents, and documents. It connects:
+
+- Practice domains and matter types
+- Legal authorities (IRC sections, ERISA provisions, DOL guidance)
+- Document classes and workflow types
+- Jurisdictions and confidentiality classifications
+
+The Knowledge Graph enables Peninsula to understand context and relationships, not just keywords.
+
+---
+
+## Retrieval Ranking
+
+Retrieval Ranking is the process of ordering search results by relevance before presenting them to the AI or user. Peninsula's ranking considers:
+
+- Query-document similarity (lexical and semantic)
+- Source authority and reliability
+- Recency and version status
+- Access permissions and confidentiality fit
+- Historical query patterns and feedback
+
+Better ranking means more relevant context for AI synthesis.
+
+---
+
+## Work Product
+
+Work Product refers to the deliverables Peninsula helps create. Examples include:
+
+- Legal memos and opinion letters
+- Due diligence summaries
+- Transaction analyses and charts
+- Research compilations with citations
+- Regulatory compliance checklists
+
+All work product requires human review before client delivery.
+
+---
+
+## Workflow Modules
+
+Workflow Modules are repeatable, structured processes that Kelso can execute. Each module defines:
+
+- Input requirements and data contracts
+- Processing steps and decision logic
+- Output schemas and formatting rules
+- Citation requirements
+- Human review checkpoints
+- Escalation rules for edge cases
+
+Modules turn ad-hoc tasks into consistent, auditable processes.
+
+---
+
+## Workspaces
+
+Workspaces are organized environments within Peninsula where teams collaborate on specific matters or projects. A workspace provides:
+
+- Scoped access to relevant documents and data
+- Shared conversation history and context
+- Matter-specific configurations and permissions
+- Audit trails for all activity
+
+Workspaces keep work organized and access controlled.
+
+---
+
+## Additional Terms
+
+<AccordionGroup>
+  <Accordion title="ACL (Access Control List)">
+    A list of permissions attached to a document or resource that specifies which users or roles can access it and what operations they can perform.
+  </Accordion>
+  <Accordion title="Citation Readiness">
+    A flag indicating whether a document has been processed to a level where it can be reliably cited in work product outputs.
+  </Accordion>
+  <Accordion title="Extraction Quality Score">
+    A numeric measure (0-1) of how successfully text and structure were extracted from a source document during processing.
+  </Accordion>
+  <Accordion title="Knowledge Card">
+    A structured record representing a single indexed document with all its metadata, taxonomy tags, and retrieval attributes.
+  </Accordion>
+  <Accordion title="OCR (Optical Character Recognition)">
+    Technology that converts scanned images or PDFs into searchable text. Peninsula applies OCR selectively based on extraction quality thresholds.
+  </Accordion>
+  <Accordion title="Processing Depth">
+    The level of analysis applied to a document: L0 (metadata only), L1 (standard extraction), L2 (selective OCR), L3 (full enrichment with entity/relation tagging).
+  </Accordion>
+  <Accordion title="Provenance">
+    The documented origin and history of a piece of data, including its source system, transformations, and lineage.
+  </Accordion>
+  <Accordion title="RAG (Retrieval-Augmented Generation)">
+    An AI architecture pattern where relevant documents are retrieved first, then used as context for generating responses. Peninsula uses RAG to ground all outputs.
+  </Accordion>
+  <Accordion title="Taxonomy">
+    A hierarchical classification system for organizing documents and concepts. Peninsula taxonomies include practice domain, matter type, document class, and legal authority.
+  </Accordion>
+</AccordionGroup>
