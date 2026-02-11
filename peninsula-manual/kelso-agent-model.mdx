@@ -1,67 +1,243 @@
 ---
 title: "Kelso Agent"
-description: "How Kelso works, how agents differ from prompts, and how multi-model orchestration is governed."
+description: "How Kelso works — natural language chat, file editing, workflow execution, and deep ESOP expertise."
 ---
 
 ## Quick Definition
 
-Kelso is Peninsula's execution agent layer. It is designed to perform work, not just answer one-off questions.
+Kelso is Peninsula's execution agent layer. It is designed to perform work, not just answer one-off questions. Kelso combines deep ESOP expertise with practical capabilities like file editing and workflow execution.
+
+---
+
+## Natural Language Chat for ESOP Questions
+
+Kelso answers complex ESOP questions grounded in authoritative sources.
+
+<CardGroup cols={2}>
+  <Card title="ERISA Expertise" icon="scale-balanced">
+    Fiduciary duties, prohibited transactions, plan qualification requirements
+  </Card>
+  <Card title="IRC Knowledge" icon="file-invoice-dollar">
+    Section 409(p), 404(a)(9), 4975, and other tax code provisions
+  </Card>
+  <Card title="DOL Guidance" icon="landmark">
+    Advisory opinions, field assistance bulletins, and enforcement positions
+  </Card>
+  <Card title="Case Law" icon="gavel">
+    Relevant court decisions and their implications
+  </Card>
+</CardGroup>
+
+**Example questions Kelso can answer:**
+- "What are the repurchase obligation requirements under ERISA?"
+- "Explain the IRC 409(p) anti-abuse rules for S corporation ESOPs"
+- "What fiduciary standards apply to ESOP trustees under DOL guidance?"
+- "How do affiliated service group rules affect ESOP coverage testing?"
+
+---
+
+## File Editing Capabilities
+
+Kelso can directly edit files across multiple formats without requiring you to switch tools.
+
+| File Type | Capabilities |
+| --- | --- |
+| **Spreadsheets (XLSX)** | Update cells, add formulas, restructure data, create summaries, format tables |
+| **Documents (DOCX)** | Edit text, apply formatting, insert sections, update tables of contents |
+| **CSV Files** | Parse, transform, merge, and export structured data |
+| **PDFs** | Extract content, annotate, convert to editable formats |
+
+**ESOP-specific file editing examples:**
+- Update repurchase obligation projections with new participant data
+- Revise plan document sections based on regulatory changes
+- Extract key terms from valuation reports into structured summaries
+- Merge participant census data from multiple sources
+
+---
+
+## Custom Workflow Execution
+
+Kelso executes structured workflows that standardize how work gets done.
+
+### Workflow Capabilities
+
+<AccordionGroup>
+  <Accordion title="Multi-Step Execution">
+    Kelso follows defined sequences of steps, handling branching logic and conditional actions based on intermediate results.
+  </Accordion>
+  <Accordion title="Cross-System Operations">
+    Workflows can read from and write to connected systems, coordinating actions across your technology stack.
+  </Accordion>
+  <Accordion title="Human Checkpoints">
+    Workflows pause for human review at defined gates before proceeding with sensitive operations.
+  </Accordion>
+  <Accordion title="Parallel Processing">
+    Complex workflows can trigger sub-agents for parallel task execution, then synthesize results.
+  </Accordion>
+</AccordionGroup>
+
+### Example Workflows
+
+| Workflow | Steps | Output |
+| --- | --- | --- |
+| **Precedent Research** | Query → Retrieve → Rank → Synthesize → Cite | Research memo with sources |
+| **Document Drafting** | Template → Populate → Review → Revise | First draft with citations |
+| **Due Diligence** | Checklist → Extract → Flag → Summarize | Issue spotting report |
+| **Regulatory Check** | Monitor → Compare → Alert → Document | Change impact analysis |
+
+---
+
+## Deep ESOP Expertise
+
+Kelso is trained on comprehensive ESOP knowledge, including specialized topics that require deep expertise.
+
+### Repurchase Obligations
+
+Kelso understands the complexities of ESOP repurchase obligations:
+
+- Liability projection methodologies
+- Funding strategies and timing considerations
+- Diversification requirements and their impact
+- Put option mechanics and valuation implications
+- Cash flow planning for maturing plans
+
+### Fiduciary Standards
+
+Kelso applies ERISA fiduciary principles to analysis:
+
+- Prudent expert standard for ESOP trustees
+- Adequate consideration requirements
+- Prohibited transaction exemptions
+- Duty of loyalty and exclusive benefit rule
+- Process documentation requirements
+
+### Technical Compliance
+
+Kelso handles technical ESOP compliance questions:
+
+- Coverage and participation testing
+- Contribution and allocation limits
+- Distribution timing and form requirements
+- Voting and pass-through requirements
+- Integration with other qualified plans
+
+---
+
+## Grounding and Citations
+
+Every substantive output from Kelso includes source references.
+
+<Note>
+Kelso does not generate information that isn't grounded in your indexed corpus or authoritative sources. All claims can be traced back to their origins.
+</Note>
+
+### How Grounding Works
+
+1. **Retrieval First**: Before generating any response, Kelso retrieves relevant documents from your knowledge base
+2. **Context Assembly**: Retrieved content is assembled with access controls enforced
+3. **Grounded Generation**: Responses are generated based only on retrieved evidence
+4. **Citation Attachment**: Source references are attached to each substantive claim
+
+### Citation Format
+
+Kelso provides citations in a consistent format:
+
+```
+[Source: Document Name, Section/Page, Date]
+```
+
+Example:
+> The repurchase obligation must be funded in a manner that does not jeopardize the plan's ability to meet its obligations. [Source: DOL Advisory Opinion 2006-09A, Section III, December 2006]
+
+---
+
+## Context Management
+
+Kelso maintains context across conversations and workflows.
+
+### Conversation Context
+
+- **Session Memory**: Kelso remembers what you've discussed within a session
+- **Reference Resolution**: "That document" or "the previous analysis" are understood in context
+- **Preference Learning**: Kelso adapts to your communication style and preferences
+
+### Workspace Context
+
+- **Matter Awareness**: Kelso knows which matter you're working on and scopes responses accordingly
+- **Document Context**: When editing files, Kelso understands the full document structure
+- **Historical Context**: Previous work on a matter informs current responses
+
+---
+
+## Guardrails and Governance
+
+Kelso operates within defined boundaries to ensure safe, reliable outputs.
+
+### Built-In Guardrails
+
+| Guardrail | Purpose |
+| --- | --- |
+| **Citation Requirement** | Substantive legal claims must have source references |
+| **Confidence Flagging** | Low-confidence outputs are marked for review |
+| **Scope Enforcement** | Responses stay within authorized data boundaries |
+| **Human Review Gates** | Client-facing work requires human approval |
+
+### Governance Controls
+
+<CardGroup cols={2}>
+  <Card title="Access Control" icon="lock">
+    Kelso only accesses data you're authorized to see
+  </Card>
+  <Card title="Audit Logging" icon="clipboard-list">
+    All interactions are logged for compliance and review
+  </Card>
+  <Card title="Output Review" icon="eye">
+    Configurable review requirements by output type
+  </Card>
+  <Card title="Escalation Rules" icon="arrow-up">
+    Novel or high-risk queries route to senior review
+  </Card>
+</CardGroup>
+
+### Behavior Configuration
+
+Kelso's behavior can be configured at the workspace level:
+
+```json
+{
+  "require_citations": true,
+  "confidence_threshold": 0.8,
+  "escalation_triggers": ["novel_issue", "high_value", "regulatory"],
+  "review_required": ["client_facing", "external_distribution"],
+  "style_guide": "eblg_standard"
+}
+```
+
+---
 
 ## Prompt vs. Agent
 
-| Concept | Meaning | Operational consequence |
+Understanding the difference between prompts and agents:
+
+| Concept | Meaning | Operational Consequence |
 | --- | --- | --- |
-| Prompt | instruction for how to respond in a given moment | useful for ad hoc tasks, ephemeral behavior |
-| Agent | persistent worker with tools, memory, and task execution logic | supports repeatable workflows and higher consistency |
+| **Prompt** | Instruction for how to respond in a given moment | Useful for ad hoc tasks, ephemeral behavior |
+| **Agent** | Persistent worker with tools, memory, and task execution logic | Supports repeatable workflows and higher consistency |
 
-## What Kelso Can Do (Base)
+Kelso is an agent, not just a prompt interface. This means:
 
-- Query EBLG knowledge corpus in natural language.
-- Return source-grounded outputs with citations.
-- Draft documents and structured analysis artifacts.
-- Propose follow-up actions and request clarification when confidence is low.
+- Kelso maintains state across interactions
+- Kelso can use tools (file editing, search, calculations)
+- Kelso follows defined workflows with checkpoints
+- Kelso improves through structured feedback
 
-## What Kelso Can Do (With Workflow Programming)
-
-- Execute multi-step workflows across systems.
-- Trigger specialized sub-agents for parallel task execution.
-- Apply firm templates and style rules to output.
-- Maintain standardized process quality across teams.
-
-## Multi-Model Strategy
-
-Peninsula supports multiple leading model providers. Model choice can be:
-
-- user-selected for a task,
-- system-routed based on workload type,
-- constrained by client policy and confidentiality requirements.
-
-Policy principle: model routing can vary, but retrieval evidence and governance controls remain consistent.
-
-## Cross-Platform Execution Pattern
-
-Kelso can read from connected systems by default. Write-back behavior depends on destination system APIs and approved permissions.
-
-| Operation type | Expected capability |
-| --- | --- |
-| Read from source systems | standard |
-| Analyze and synthesize | standard |
-| Create deliverables | standard |
-| Update external system records | conditional on API and policy |
-
-## Suggested Default Behavior Pack
-
-For EBLG v1:
-
-1. Always provide citations for substantive legal outputs.
-2. Provide confidence markers and request clarifications on ambiguous facts.
-3. Offer suggested next steps after each major output.
-4. Route low-confidence or novel-issue outputs to senior review.
+---
 
 ## Why This Matters
 
 Kelso should be treated as a programmable digital workforce:
 
-- broad capability for ad hoc tasks,
-- deep reliability for high-frequency workflows once configured,
-- continuous improvement through structured feedback and policy updates.
+- **Broad capability** for ad hoc tasks and questions
+- **Deep reliability** for high-frequency workflows once configured
+- **Continuous improvement** through structured feedback and policy updates
+- **Consistent governance** regardless of task complexity
