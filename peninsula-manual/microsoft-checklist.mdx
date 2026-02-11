@@ -1,0 +1,48 @@
+---
+title: "Microsoft Guidance Reconciliation Checklist"
+description: "Checklist to reconcile Microsoft-oriented AI policy guidance with Peninsula implementation decisions."
+---
+
+## Why This Exists
+
+Kevin requested a direct comparison between Microsoft-oriented AI policy recommendations and Peninsula implementation choices.
+
+This page is the decision record: where we align, where we adapt, and why.
+
+## Checklist
+
+| Guidance theme | Peninsula position | Status | Notes |
+| --- | --- | --- | --- |
+| Avoid black-box architecture | Use inspectable ingestion, retrieval, and audit layers | Aligned | Manual includes inspection protocol and evidence pack |
+| Minimize manual tagging burden | Use hybrid approach: lightweight historical baseline plus forward incremental indexing | Adapted | Avoids full retro-tagging while preserving historical retrieval value |
+| Use retrieval-grounded generation | Use hybrid retrieval with citation requirements | Aligned | Provenance is mandatory for substantive outputs |
+| Protect confidential legal data | Apply role and matter-level access controls before retrieval | Aligned | Access controls are enforced pre-context assembly |
+| Do not rebuild core PM systems | Keep Peninsula as knowledge layer over systems of record | Aligned | Explicit non-goal in manual and EBLG profile |
+| Maintain portability and exit options | Maintain exports for data, lineage, and logs | Aligned | Quarterly portability drill in operating cadence |
+| Require human oversight | Human review required for client-facing legal outputs | Aligned | Review gates in workflow policy |
+
+## Decision Note: Retro-Indexing Question
+
+The practical answer to "Do we retro-index everything?" is no.
+
+Recommended policy:
+
+- Build a high-value historical baseline.
+- Index new approved content continuously.
+- Backfill selectively when query analytics show misses.
+
+This is the lowest-risk path to quality without forcing long-term manual tagging overhead.
+
+## Evidence Required for Signoff
+
+For each checklist row above, maintain:
+
+- policy reference (manual section),
+- implementation artifact (config, connector, or control),
+- validation result (pass/fail/exception),
+- owner and review date.
+
+## Review Cadence
+
+- Monthly: checklist status review with operations and IT.
+- Quarterly: governance review with leadership and board-facing summary update.

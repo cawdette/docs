@@ -1,0 +1,58 @@
+---
+title: "EBLG Platform Compatibility Matrix"
+description: "Compatibility view for Clarra/NetDocuments, Clio, Smokeball, Caret Legal, and MyCase."
+---
+
+## Purpose
+
+This matrix translates Erica's shortlisted platforms into integration decisions with clear go/no-go checks.
+
+Compatibility is defined by three requirements:
+
+1. Documents are accessible through API or practical export.
+2. Matter/client metadata can be mapped reliably.
+3. Permissions can be enforced in Peninsula retrieval flows.
+
+## Matrix (Initial)
+
+| Platform | Typical integration path | Initial status | Key validation checks |
+| --- | --- | --- | --- |
+| Clarra (with NetDocuments) | NetDocuments API/export plus matter mapping | Likely compatible | Confirm canonical storage location and ACL mapping model |
+| Clio | Clio API for matters, contacts, and documents | Likely compatible | Confirm document access scope, rate limits, and metadata completeness |
+| Smokeball | Vendor API or bulk export adapter | Partial, needs validation | Confirm API maturity and export path for production ingestion |
+| Caret Legal | Vendor API or export adapter | Unknown, validate | Confirm available endpoints, auth model, and data shape |
+| MyCase | MyCase API or structured export | Likely compatible | Confirm document linkage to matters and permission semantics |
+
+## Required Data Contract Per Connector
+
+Each connector must provide:
+
+- Stable source object ID (`source_object_id`)
+- Matter and client references (`matter_id`, `client_id`)
+- File attributes (`file_type`, `created_at`, `updated_at`)
+- Access attributes or policy pointers
+- Linkage to source system for provenance
+
+## Decision Rubric
+
+Use this rubric before approving a connector:
+
+| Criterion | Pass condition |
+| --- | --- |
+| Access | Programmatic read path exists (API/export) |
+| Metadata | Matter/client mapping is deterministic |
+| Security | Permissions can be enforced pre-retrieval |
+| Portability | Source and derived records can be exported |
+| Reliability | Connector supports repeatable incremental sync |
+
+## Recommendation for EBLG Phase 1
+
+Prioritize connectors in this order:
+
+1. Clarra/NetDocuments
+2. Clio
+3. MyCase
+4. Smokeball
+5. Caret Legal
+
+This sequence maximizes early delivery probability while reducing adapter risk in the first production cycle.

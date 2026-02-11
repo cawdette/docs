@@ -30,14 +30,17 @@
             "group": "Platform Core",
             "pages": [
               "peninsula-manual/standard-manual",
-              "peninsula-manual/data-indexing-primer"
+              "peninsula-manual/data-indexing-primer",
+              "peninsula-manual/inspection-audit-guide"
             ]
           },
           {
             "group": "Client Layer (EBLG)",
             "pages": [
               "peninsula-manual/eblg-profile",
-              "peninsula-manual/kevin-requirements"
+              "peninsula-manual/kevin-requirements",
+              "peninsula-manual/integration-compatibility-matrix",
+              "peninsula-manual/microsoft-checklist"
             ]
           },
           {
