@@ -75,8 +75,8 @@
     }
   },
   "logo": {
-    "light": "/logo/village-light.png",
-    "dark": "/logo/village-dark.png"
+    "light": "/logo/village-light.svg",
+    "dark": "/logo/village-dark.svg"
   },
   "navbar": {
     "links": [
