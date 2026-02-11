@@ -15,39 +15,46 @@
   },
   "favicon": "/images/village-mark.png",
   "navigation": {
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Village Labs",
+          "icon": "globe",
+          "href": "https://www.villagelabs.com"
+        },
+        {
+          "anchor": "Peninsula",
+          "icon": "book-open-cover",
+          "href": "https://www.villagelabs.com/peninsula"
+        }
+      ]
+    },
     "tabs": [
       {
-        "tab": "Manual",
+        "tab": "Peninsula User Manual",
         "groups": [
           {
             "group": "General Information",
             "pages": [
               "index",
               "peninsula-manual/what-is-peninsula",
-              "peninsula-manual/index",
               "peninsula-manual/glossary"
             ]
           },
           {
-            "group": "Peninsula Platform",
+            "group": "Peninsula",
             "pages": [
               "peninsula-manual/system-capabilities",
               "peninsula-manual/kelso-agent-model",
-              "peninsula-manual/data-indexing-primer",
-              "peninsula-manual/integrations",
+              "peninsula-manual/intelligence-and-knowledge-bases",
+              {
+                "group": "Setting up your firm data",
+                "pages": [
+                  "data-ingestion-and-processing"
+                ]
+              },
               "peninsula-manual/security",
               "peninsula-manual/ai-models"
-            ]
-          },
-          {
-            "group": "EBLG",
-            "pages": [
-              "peninsula-manual/eblg-profile",
-              "peninsula-manual/implementation-roadmap-eblg",
-              "peninsula-manual/kevin-requirements",
-              "peninsula-manual/integration-compatibility-matrix",
-              "peninsula-manual/microsoft-checklist",
-              "peninsula-manual/client-requests"
             ]
           },
           {
@@ -57,22 +64,27 @@
             ]
           }
         ]
+      },
+      {
+        "tab": "AI 101 & Developments"
+      },
+      {
+        "tab": "Employee Benefits Law Group",
+        "pages": [
+          "peninsula-manual/eblg-profile",
+          "peninsula-manual/integration-compatibility-matrix",
+          {
+            "group": "EBLG",
+            "pages": [
+              "peninsula-manual/implementation-roadmap-eblg",
+              "peninsula-manual/kevin-requirements",
+              "peninsula-manual/microsoft-checklist",
+              "peninsula-manual/client-requests"
+            ]
+          }
+        ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Village Labs",
-          "href": "https://www.villagelabs.com",
-          "icon": "globe"
-        },
-        {
-          "anchor": "Peninsula",
-          "href": "https://www.villagelabs.com/peninsula",
-          "icon": "book-open-cover"
-        }
-      ]
-    }
+    ]
   },
   "logo": {
     "light": "/logo/village-light.svg",
