@@ -5,8 +5,231 @@ description: "Which AI models power Peninsula, how they are selected, and what e
 
 ## Overview
 
-Peninsula leverages multiple AI models to deliver intelligent capabilities across different use cases. This page explains the model selection strategy, routing logic, and the strengths of each model in the platform's toolkit.
+Peninsula leverages a multi-model architecture to deliver intelligent capabilities across different use cases. Rather than relying on a single AI model, Peninsula routes tasks to the model best suited for each job, ensuring optimal performance, cost efficiency, and output quality.
 
-## Model strategy
+---
 
-*This page is a placeholder. Detailed model information and selection criteria will be added as the documentation evolves.*
+## Multi-Model Architecture
+
+Peninsula's intelligence layer is model-agnostic by design. This provides:
+
+<CardGroup cols={2}>
+  <Card title="Best-Fit Routing" icon="route">
+    Each task goes to the model that handles it best
+  </Card>
+  <Card title="Redundancy" icon="shield">
+    No single point of failure if a model is unavailable
+  </Card>
+  <Card title="Cost Optimization" icon="coins">
+    Simple tasks use efficient models; complex tasks use powerful ones
+  </Card>
+  <Card title="Future-Proofing" icon="forward">
+    New models can be added without platform changes
+  </Card>
+</CardGroup>
+
+---
+
+## Primary Models
+
+### Claude (Anthropic)
+
+Claude serves as the primary model for deep reasoning and complex legal analysis.
+
+| Strength | Application |
+| --- | --- |
+| **Long-context reasoning** | Analyzing lengthy documents and synthesizing across sources |
+| **Nuanced interpretation** | Understanding legal language and regulatory nuance |
+| **Citation accuracy** | Maintaining precise references to source materials |
+| **Instruction following** | Adhering to firm style guides and output formats |
+
+**Best for:**
+- Legal memo drafting and opinion letters
+- Complex regulatory analysis (ERISA, IRC, DOL)
+- Multi-document synthesis and comparison
+- Nuanced question answering requiring judgment
+
+---
+
+### GPT-4o (OpenAI)
+
+GPT-4o excels at structured outputs and rapid processing.
+
+| Strength | Application |
+| --- | --- |
+| **Structured generation** | JSON, tables, and formatted outputs |
+| **Speed** | Fast responses for interactive workflows |
+| **Tool use** | Reliable function calling and API integration |
+| **Broad knowledge** | General business and technical tasks |
+
+**Best for:**
+- Data extraction and structuring
+- Spreadsheet and CSV manipulation
+- Quick lookups and fact retrieval
+- Workflow automation steps
+
+---
+
+### Gemini (Google)
+
+Gemini provides multimodal capabilities for documents with mixed content.
+
+| Strength | Application |
+| --- | --- |
+| **Multimodal processing** | Documents with images, charts, and diagrams |
+| **Large context** | Very long documents in a single pass |
+| **Visual understanding** | Interpreting tables, flowcharts, and signatures |
+
+**Best for:**
+- Processing scanned documents with visual elements
+- Analyzing presentations and reports with charts
+- Documents where layout and visual structure matter
+
+---
+
+## Additional Models
+
+Peninsula also integrates specialized models for specific use cases:
+
+<AccordionGroup>
+  <Accordion title="Mistral">
+    European-hosted model option for data residency requirements. Strong performance on structured tasks with lower latency.
+  </Accordion>
+  <Accordion title="Llama (Meta)">
+    Open-source model available for on-premises deployment scenarios. Useful for clients requiring full infrastructure control.
+  </Accordion>
+  <Accordion title="Deepseek">
+    Cost-effective model for high-volume, lower-complexity tasks. Useful for bulk processing and classification.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Model Selection Logic
+
+Peninsula automatically routes tasks based on multiple factors:
+
+### Routing Criteria
+
+| Factor | Consideration |
+| --- | --- |
+| **Task complexity** | Simple extraction vs. complex reasoning |
+| **Output format** | Prose vs. structured data |
+| **Context length** | Short query vs. multi-document analysis |
+| **Content type** | Text-only vs. multimodal |
+| **Latency requirements** | Interactive vs. batch processing |
+| **Cost sensitivity** | High-value vs. routine tasks |
+
+### Routing Examples
+
+| Task | Routed To | Reason |
+| --- | --- | --- |
+| Draft ESOP opinion letter | Claude | Complex legal reasoning, long-form output |
+| Extract data from spreadsheet | GPT-4o | Structured output, tool use |
+| Analyze scanned plan document | Gemini | Multimodal, visual table extraction |
+| Classify 500 documents | Deepseek | Bulk processing, cost efficiency |
+| Quick fact lookup | GPT-4o | Speed, simple retrieval |
+
+---
+
+## Performance Characteristics
+
+### Response Quality
+
+All models are evaluated against Peninsula's quality benchmarks:
+
+- **Citation accuracy**: Sources correctly identified and referenced
+- **Factual grounding**: Claims supported by retrieved evidence
+- **Format compliance**: Outputs match requested structure
+- **Completeness**: All requested elements addressed
+
+### Latency Profiles
+
+| Model | Typical Latency | Best For |
+| --- | --- | --- |
+| GPT-4o | 1-3 seconds | Interactive chat, quick tasks |
+| Claude | 3-10 seconds | Complex analysis, long outputs |
+| Gemini | 2-5 seconds | Multimodal processing |
+| Mistral | 1-3 seconds | Structured tasks, EU hosting |
+
+---
+
+## Governance of Model Outputs
+
+Regardless of which model generates output, Peninsula applies consistent governance:
+
+### Pre-Generation Controls
+
+- Retrieval grounding required before generation
+- Context assembly respects access controls
+- Prompt templates enforce firm policies
+
+### Post-Generation Controls
+
+- Citation verification against source documents
+- Confidence scoring for output reliability
+- Hallucination detection and flagging
+- Human review gates for client-facing work
+
+### Audit Trail
+
+Every model interaction is logged with:
+- Model used and version
+- Input context (with source references)
+- Output generated
+- Confidence scores
+- User and timestamp
+
+---
+
+## Model Configuration
+
+Clients can configure model behavior at multiple levels:
+
+### Workspace-Level Settings
+
+```json
+{
+  "default_model": "claude",
+  "fallback_model": "gpt-4o",
+  "max_tokens": 4096,
+  "temperature": 0.3,
+  "require_citations": true
+}
+```
+
+### Task-Level Overrides
+
+Users can request specific models for particular tasks when needed, subject to policy constraints.
+
+### Policy Constraints
+
+Administrators can set policies such as:
+- Restrict certain models for confidential matters
+- Require specific models for regulated workflows
+- Set cost limits per workspace or user
+
+---
+
+## Future-Proofing
+
+Peninsula's model-agnostic architecture ensures you benefit from AI advances:
+
+<CardGroup cols={2}>
+  <Card title="New Model Integration" icon="plus">
+    New models added to the platform as they become available
+  </Card>
+  <Card title="Automatic Upgrades" icon="arrow-up">
+    Model versions updated with testing and validation
+  </Card>
+  <Card title="Benchmark Tracking" icon="chart-line">
+    Continuous evaluation against quality benchmarks
+  </Card>
+  <Card title="No Lock-In" icon="lock-open">
+    Switch models without changing workflows or data
+  </Card>
+</CardGroup>
+
+<Note>
+Model availability and routing logic are continuously optimized. Contact your Village Labs team for the latest model capabilities and recommendations for your use cases.
+</Note>
