@@ -7,12 +7,251 @@ description: "Enterprise security posture — SOC 2, encryption, zero data reten
 
 Peninsula is built with enterprise security requirements at its core. This page documents the security architecture, compliance certifications, and data handling policies that protect client information.
 
-## Security framework
+---
 
-*This page is a placeholder. Detailed security and compliance information will be added as the documentation evolves.*
+## Compliance Certifications
 
-- SOC 2 compliance
-- Encryption standards
-- Zero data retention policies
-- Access controls
-- Compliance frameworks
+<CardGroup cols={2}>
+  <Card title="SOC 2 Type II Certified" icon="shield-check">
+    Independent audit verification of security, availability, and confidentiality controls
+  </Card>
+  <Card title="Annual Penetration Testing" icon="bug">
+    Third-party security assessments with remediation tracking
+  </Card>
+</CardGroup>
+
+**SOC 2 Trust Service Criteria covered:**
+- Security: Protection against unauthorized access
+- Availability: System uptime and reliability commitments
+- Confidentiality: Protection of confidential information
+- Processing Integrity: Accurate and complete data processing
+
+---
+
+## Encryption Standards
+
+All data is encrypted in transit and at rest using industry-standard protocols.
+
+| Layer | Standard | Details |
+| --- | --- | --- |
+| **In Transit** | TLS 1.3 | All API calls, data transfers, and user sessions |
+| **At Rest** | AES-256 | All stored data, indexes, and backups |
+| **Key Management** | HSM-backed | Hardware security modules for key storage |
+| **Database** | Transparent encryption | Column-level encryption for sensitive fields |
+
+**Certificate management:**
+- Automated certificate rotation
+- Certificate transparency logging
+- HSTS enforcement on all endpoints
+
+---
+
+## Zero Data Retention Policy
+
+Peninsula operates with a zero data retention policy for AI model interactions.
+
+<Note>
+Your data is never used to train AI models. Prompts and responses are not retained by model providers.
+</Note>
+
+**What this means:**
+- Queries sent to AI models are not stored by the model provider
+- No training on your firm's data or conversations
+- Session data is ephemeral and cleared after processing
+- You maintain full ownership and control of your data
+
+**Data lifecycle:**
+
+| Stage | Retention | Control |
+| --- | --- | --- |
+| Source data | Per your policy | You control retention in source systems |
+| Indexed data | Per your policy | Configurable retention and deletion |
+| AI interactions | Zero retention | Not stored by model providers |
+| Audit logs | Configurable | Typically 1-7 years per compliance needs |
+
+---
+
+## Access Controls & RBAC
+
+Peninsula enforces role-based access control (RBAC) at every layer.
+
+### Permission Model
+
+<CardGroup cols={2}>
+  <Card title="Role-Based Access" icon="user-shield">
+    Permissions assigned by role, not individual user
+  </Card>
+  <Card title="Matter-Level Restrictions" icon="folder-closed">
+    Data access scoped to specific matters and clients
+  </Card>
+  <Card title="Least Privilege" icon="lock">
+    Users receive minimum permissions needed for their role
+  </Card>
+  <Card title="Inheritance Controls" icon="sitemap">
+    Permissions flow from source systems with override capability
+  </Card>
+</CardGroup>
+
+### Standard Roles
+
+| Role | Access Level | Typical Users |
+| --- | --- | --- |
+| **Viewer** | Read-only access to assigned matters | Support staff, reviewers |
+| **Contributor** | Read/write within assigned matters | Associates, paralegals |
+| **Manager** | Full access plus team management | Partners, practice leads |
+| **Admin** | System configuration and user management | IT administrators |
+
+### Access Enforcement
+
+- Permissions checked before every retrieval operation
+- ACLs propagated from source systems
+- Real-time permission updates (no caching delays)
+- Audit logging of all access attempts
+
+---
+
+## Authentication
+
+Peninsula supports enterprise authentication standards.
+
+### SSO & Identity Providers
+
+| Provider | Protocol | Status |
+| --- | --- | --- |
+| **Microsoft Entra ID** | SAML 2.0, OIDC | Supported |
+| **Okta** | SAML 2.0, OIDC | Supported |
+| **Google Workspace** | OIDC | Supported |
+| **OneLogin** | SAML 2.0 | Supported |
+| **Custom SAML** | SAML 2.0 | Supported |
+
+### Multi-Factor Authentication
+
+MFA is required for all users and supports:
+- Authenticator apps (TOTP)
+- Hardware security keys (FIDO2/WebAuthn)
+- Push notifications
+- SMS backup (configurable)
+
+### Session Management
+
+- Configurable session timeouts
+- Automatic logout on inactivity
+- Concurrent session limits
+- Session revocation on password change
+
+---
+
+## Infrastructure Security
+
+Peninsula runs on enterprise-grade cloud infrastructure with defense-in-depth.
+
+### Network Security
+
+<AccordionGroup>
+  <Accordion title="Network Isolation">
+    - Virtual private cloud (VPC) isolation
+    - Private subnets for data processing
+    - No direct internet exposure for data stores
+    - Network segmentation between tenants
+  </Accordion>
+  <Accordion title="Perimeter Defense">
+    - Web application firewall (WAF)
+    - DDoS protection
+    - Rate limiting and throttling
+    - IP allowlisting (optional)
+  </Accordion>
+  <Accordion title="Monitoring">
+    - 24/7 security monitoring
+    - Intrusion detection systems
+    - Anomaly detection and alerting
+    - Real-time threat intelligence
+  </Accordion>
+</AccordionGroup>
+
+### Application Security
+
+- Secure development lifecycle (SDL)
+- Static and dynamic code analysis
+- Dependency vulnerability scanning
+- Regular security training for developers
+
+---
+
+## Compliance Frameworks
+
+Peninsula aligns with major compliance frameworks relevant to legal and financial services.
+
+| Framework | Alignment | Notes |
+| --- | --- | --- |
+| **SOC 2** | Certified | Annual Type II audit |
+| **GDPR** | Compliant | Data processing agreements available |
+| **CCPA** | Compliant | California privacy requirements |
+| **HIPAA** | BAA available | For healthcare-related legal work |
+| **ABA Model Rules** | Supportive | Confidentiality and competence controls |
+
+---
+
+## Data Handling Policies
+
+### Data Classification
+
+Peninsula supports configurable data classification tiers:
+
+| Tier | Description | Controls |
+| --- | --- | --- |
+| **Public** | Non-sensitive, shareable | Standard access controls |
+| **Internal** | Business-sensitive | Role-based access |
+| **Confidential** | Client matter data | Matter-level restrictions |
+| **Restricted** | Highly sensitive | Named-user access only |
+
+### Data Processing
+
+- Processing occurs only in designated regions
+- No data leaves your configured geography
+- Sub-processors disclosed and contractually bound
+- Data processing agreements (DPAs) available
+
+### Data Deletion
+
+- Self-service deletion for authorized users
+- Automated retention policy enforcement
+- Cryptographic deletion for indexed data
+- Deletion certificates available on request
+
+---
+
+## Incident Response
+
+Peninsula maintains a documented incident response program.
+
+**Response timeline commitments:**
+
+| Severity | Detection | Notification | Resolution Target |
+| --- | --- | --- | --- |
+| **Critical** | < 15 min | < 1 hour | < 4 hours |
+| **High** | < 1 hour | < 4 hours | < 24 hours |
+| **Medium** | < 4 hours | < 24 hours | < 72 hours |
+| **Low** | < 24 hours | < 72 hours | Next release |
+
+**Incident response includes:**
+- Dedicated security response team
+- Documented runbooks for common scenarios
+- Post-incident review and remediation
+- Customer notification per contractual requirements
+
+---
+
+## Security Documentation
+
+Additional security documentation available on request:
+
+- SOC 2 Type II report
+- Penetration test executive summary
+- Security architecture whitepaper
+- Data processing agreement (DPA)
+- Business associate agreement (BAA)
+- Vendor security questionnaire responses
+
+<Note>
+Contact your Village Labs account team to request security documentation or schedule a security review call.
+</Note>
