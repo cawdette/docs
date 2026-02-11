@@ -20,41 +20,38 @@
         "tab": "Manual",
         "groups": [
           {
-            "group": "Orientation",
+            "group": "General Information",
             "pages": [
               "index",
-              "peninsula-manual/index",
               "peninsula-manual/what-is-peninsula",
-              "peninsula-manual/kelso-agent-model",
-              "peninsula-manual/implementation-roadmap-eblg"
+              "peninsula-manual/index",
+              "peninsula-manual/glossary"
             ]
           },
           {
-            "group": "Platform Core",
+            "group": "Peninsula Platform",
             "pages": [
-              "peninsula-manual/standard-manual",
+              "peninsula-manual/system-capabilities",
+              "peninsula-manual/kelso-agent-model",
               "peninsula-manual/data-indexing-primer",
-              "peninsula-manual/inspection-audit-guide"
+              "peninsula-manual/integrations",
+              "peninsula-manual/security",
+              "peninsula-manual/ai-models"
             ]
           },
           {
-            "group": "Client Layer (EBLG)",
+            "group": "EBLG",
             "pages": [
               "peninsula-manual/eblg-profile",
+              "peninsula-manual/implementation-roadmap-eblg",
               "peninsula-manual/kevin-requirements",
               "peninsula-manual/integration-compatibility-matrix",
-              "peninsula-manual/microsoft-checklist"
+              "peninsula-manual/microsoft-checklist",
+              "peninsula-manual/client-requests"
             ]
           },
           {
-            "group": "Design System",
-            "pages": [
-              "peninsula-manual/design-system",
-              "peninsula-manual/generalization-framework"
-            ]
-          },
-          {
-            "group": "Operations",
+            "group": "Operations & Deployment",
             "pages": [
               "peninsula-manual/mintlify-deployment"
             ]
