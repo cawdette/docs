@@ -5,8 +5,249 @@ description: "The full inventory of 50+ systems Peninsula connects to and how th
 
 ## Overview
 
-Peninsula integrates with a wide range of enterprise systems to ingest data, execute workflows, and deliver outputs where teams already work. This page catalogs available connectors and explains how integrations are configured and governed.
+Peninsula integrates with a wide range of enterprise systems to ingest data, execute workflows, and deliver outputs where teams already work. With 50+ available connectors, Peninsula meets your team where they are without requiring workflow changes.
 
-## Connector inventory
+---
 
-*This page is a placeholder. The full integration inventory and connection details will be added as the documentation evolves.*
+## Enterprise & IT Connectors
+
+Core productivity and collaboration tools used across the enterprise.
+
+<CardGroup cols={3}>
+  <Card title="Microsoft OneDrive" icon="microsoft">
+    Cloud file storage and sync
+  </Card>
+  <Card title="SharePoint" icon="microsoft">
+    Document libraries and team sites
+  </Card>
+  <Card title="Outlook" icon="envelope">
+    Email and calendar integration
+  </Card>
+  <Card title="Microsoft Teams" icon="comments">
+    Chat, channels, and meetings
+  </Card>
+  <Card title="Excel Online" icon="table">
+    Spreadsheet collaboration
+  </Card>
+  <Card title="Google Gmail" icon="google">
+    Email and communication
+  </Card>
+  <Card title="Google Drive" icon="google">
+    Cloud storage and collaboration
+  </Card>
+  <Card title="Google Sheets" icon="table-cells">
+    Spreadsheet data access
+  </Card>
+  <Card title="Google Calendar" icon="calendar">
+    Scheduling and events
+  </Card>
+</CardGroup>
+
+---
+
+## Cloud Storage
+
+Dedicated file storage and document management platforms.
+
+| Platform | Capabilities |
+| --- | --- |
+| **Azure Blob Storage** | Enterprise cloud storage with tiered access |
+| **AWS S3** | Scalable object storage |
+| **Dropbox** | File sync and sharing |
+| **Box** | Enterprise content management |
+| **Notion** | Workspace documents and databases |
+| **Confluence** | Team documentation and wikis |
+
+---
+
+## CRM & Business Applications
+
+Customer relationship management and business operations tools.
+
+<CardGroup cols={2}>
+  <Card title="Salesforce" icon="cloud">
+    CRM data, contacts, opportunities, and custom objects
+  </Card>
+  <Card title="HubSpot" icon="hubspot">
+    Marketing, sales, and service hub data
+  </Card>
+  <Card title="Slack" icon="slack">
+    Team messaging and workflow automation
+  </Card>
+  <Card title="Asana" icon="list-check">
+    Project and task management
+  </Card>
+  <Card title="Monday.com" icon="calendar-check">
+    Work management and collaboration
+  </Card>
+  <Card title="Jira" icon="diagram-project">
+    Issue tracking and project management
+  </Card>
+</CardGroup>
+
+---
+
+## Legal Practice Management
+
+Specialized systems for legal operations and matter management.
+
+| Platform | Integration Type | Key Data |
+| --- | --- | --- |
+| **NetDocuments** | API + Export | Documents, matter metadata, version history |
+| **Clio** | API | Matters, contacts, documents, time entries |
+| **PracticePanther** | API | Case management, billing, documents |
+| **MyCase** | API | Matter files, client communications |
+| **Smokeball** | API/Export | Documents, matter data, workflows |
+| **Caret Legal** | API/Export | Practice management data |
+| **Perfect Law** | Export | Matter files, accounting data |
+
+---
+
+## Data & Analytics
+
+Database and analytics platforms for structured data access.
+
+<AccordionGroup>
+  <Accordion title="Databases">
+    - PostgreSQL
+    - MySQL
+    - Microsoft SQL Server
+    - MongoDB
+    - Snowflake
+    - BigQuery
+  </Accordion>
+  <Accordion title="Analytics Platforms">
+    - Tableau
+    - Power BI
+    - Looker
+    - Metabase
+  </Accordion>
+  <Accordion title="Data Warehouses">
+    - Snowflake
+    - Databricks
+    - Redshift
+    - BigQuery
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Custom Connectors
+
+For systems not covered by standard connectors, Peninsula supports custom integration development.
+
+**Custom connector options:**
+
+| Option | Use Case | Timeline |
+| --- | --- | --- |
+| **Webhook ingestion** | Push data from any system with webhook support | Days |
+| **API adapter** | Connect to any REST or GraphQL API | 1-2 weeks |
+| **File-based import** | Scheduled import from CSV, JSON, or XML exports | Days |
+| **Custom development** | Full integration with proprietary systems | 2-4 weeks |
+
+---
+
+## Connection Model
+
+All integrations follow a consistent connection and governance model.
+
+### Authentication
+
+| Method | Description |
+| --- | --- |
+| **OAuth 2.0** | Standard for cloud services (Microsoft, Google, Salesforce) |
+| **API Keys** | Service account access for server-to-server connections |
+| **SSO/SAML** | Enterprise identity provider integration |
+| **Certificate-based** | Mutual TLS for high-security connections |
+
+### Sync Behavior
+
+<CardGroup cols={2}>
+  <Card title="Initial Sync" icon="download">
+    Full historical data import based on scope configuration
+  </Card>
+  <Card title="Incremental Sync" icon="rotate">
+    Ongoing updates capture new and modified content
+  </Card>
+  <Card title="Real-time Webhooks" icon="bolt">
+    Instant updates for supported platforms
+  </Card>
+  <Card title="Scheduled Refresh" icon="clock">
+    Configurable sync intervals (hourly, daily, weekly)
+  </Card>
+</CardGroup>
+
+### Data Residency
+
+Peninsula respects data residency requirements:
+
+- **Region selection**: Choose where your data is processed and stored
+- **In-transit encryption**: All data encrypted during transfer (TLS 1.3)
+- **At-rest encryption**: AES-256 encryption for stored data
+- **No cross-region transfer**: Data stays in designated regions unless explicitly configured
+
+---
+
+## Connector Configuration
+
+Each connector requires specific configuration during setup.
+
+**Standard configuration fields:**
+
+| Field | Description |
+| --- | --- |
+| `connection_name` | Human-readable identifier for the integration |
+| `auth_method` | Authentication type (OAuth, API key, etc.) |
+| `scope` | What data to sync (folders, matters, date ranges) |
+| `sync_schedule` | How often to check for updates |
+| `permission_mapping` | How source permissions map to Peninsula ACLs |
+
+**Example connector configuration:**
+
+```json
+{
+  "connector": "microsoft_onedrive",
+  "connection_name": "EBLG OneDrive",
+  "auth_method": "oauth2",
+  "scope": {
+    "folders": ["/Legal/Matters", "/Legal/Templates"],
+    "file_types": ["docx", "xlsx", "pdf"],
+    "modified_after": "2020-01-01"
+  },
+  "sync_schedule": "hourly",
+  "permission_mapping": "inherit_source"
+}
+```
+
+---
+
+## Integration Governance
+
+All integrations are subject to governance controls.
+
+**Pre-connection requirements:**
+- Data owner approval for each source system
+- Scope definition (what data, what access level)
+- Permission mapping review
+- Security assessment for new connector types
+
+**Ongoing governance:**
+- Sync health monitoring and alerting
+- Access audit logs for all connector activity
+- Quarterly connector review and scope validation
+- Incident response procedures for sync failures
+
+---
+
+## Connector Status
+
+| Status | Meaning |
+| --- | --- |
+| **Generally Available** | Production-ready, fully supported |
+| **Beta** | Functional but may have limitations |
+| **In Development** | Coming soon, available for early access |
+| **Custom** | Available through custom development engagement |
+
+<Note>
+Contact your Village Labs implementation team to discuss specific connector requirements or request new integrations.
+</Note>
